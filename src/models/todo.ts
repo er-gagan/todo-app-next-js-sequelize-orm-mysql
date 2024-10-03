@@ -1,5 +1,5 @@
-import { Sequelize, DataTypes } from 'sequelize';
-import sequelize from '@/lib/db/mysql';
+import sequelize from '@/config/database';
+import { DataTypes } from 'sequelize';
 
 
 const Todo = sequelize.define('Todo', {
@@ -17,5 +17,7 @@ const Todo = sequelize.define('Todo', {
         allowNull: true
     }
 });
+
+await Todo.sync({ force: false });
 
 export default Todo;

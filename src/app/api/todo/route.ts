@@ -1,11 +1,8 @@
-import connectDB from "@/lib/db/mysql/connectDb";
+
+
 import Todo from "@/models/todo";
 import { NextRequest, NextResponse } from "next/server"
 import qs from 'qs';
-
-(async () => {
-    await connectDB()
-})()
 
 export async function POST(request: NextRequest) {
     try {
@@ -33,7 +30,6 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
     try {
-
         const rawParams = request.url.split('?')[1];
         const params: any = qs.parse(rawParams);
         const { id, currentPage, perPage, search } = params
